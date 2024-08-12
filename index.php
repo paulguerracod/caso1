@@ -65,6 +65,7 @@ try {
     <div class="content">
         <h1>Compartir Archivos </h1>
         <div class="container">
+        <h3>Sube tus archivos y comparte este enlace temporal: <span>tuip/<?php echo $carpetaNombre; ?></span></h3>
             <div class="drop-area" id="drop-area">
                 <form action="" id="form" method="POST" enctype="multipart/form-data">
                     <img src="https://cdn.pixabay.com/photo/2016/01/03/00/43/upload-1118929_1280.png" id="img" style="width: 70px; height: 70px;"><br>

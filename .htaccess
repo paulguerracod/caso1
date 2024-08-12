@@ -1,2 +1,12 @@
+# Habilita el módulo de reescritura de URL en Apache
 RewriteEngine On
-RewriteRule ^([a-zA-Z0-9]{3})$ index.php?nombre=$1 [L]
+
+# Condición: Verifica si la solicitud no es un archivo físico existente
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# Condición: Verifica si la solicitud no es un directorio físico existente
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Regla: Redirige todas las solicitudes que no sean archivos o directorios existentes
+# a index.php pasando el URI solicitado como parámetro 'nombre'
+RewriteRule ^(.*)$ index.php?nombre=$1 [L]

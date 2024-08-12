@@ -1,18 +1,18 @@
-// Obtén la URL actual
+// Obtiene la URL actual
 const urlActual = window.location.href;
 
-// Verifica si el nombre de carpeta ya está presente en la URL (después del último '/')
-const urlParts = urlActual.split('/');
-let carpetaNombre = urlParts[urlParts.length - 1];
+// Obtiene el nombre de la carpeta de la URL actual
+var carpetaNombre = window.location.pathname.split('/').pop();
 
-if (carpetaNombre.length !== 3) {
-    // Si no hay un nombre de carpeta válido, genera uno nuevo
+// Verifica si no hay un nombre de carpeta en la URL
+if (!carpetaNombre) {
+    // Genera un nombre aleatorio si no existe un nombre de carpeta
     carpetaNombre = generarCadenaAleatoria();
-    const nuevaUrl = `${window.location.origin}/proyectos/${carpetaNombre}`;
-    // Redirige a la nueva URL con el nombre de la carpeta
-    window.location.href = nuevaUrl;
+    
+    // Redirige la página a la nueva URL con el nombre de la carpeta generado
+    window.location.href = urlActual + carpetaNombre;
 } else {
-    // Llama a la función para crear la carpeta con el nombre obtenido
+    // Si ya existe un nombre de carpeta, procede a crear la carpeta con ese nombre
     crearCarpeta(carpetaNombre);
 }
 
